@@ -87,7 +87,8 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  int32_t CH1_DC = 0;
+  int32_t TIM1_DC = 0;
+  int32_t TIM2_DC = 0;
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -95,24 +96,39 @@ int main(void)
   MX_USB_HOST_Init();
   MX_TIM1_Init();
   MX_TIM2_Init();
-  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1) {
-	while(CH1_DC < 65535) {
-	  TIM1->CCR1 = CH1_DC;
-	  CH1_DC += 70;
+
+	while(TIM1_DC < 65535) {
+	  TIM1->CCR1 = TIM1_DC;
+	  TIM1_DC += 280;
 	  HAL_Delay(1);
 	}
-	while(CH1_DC > 0) {
-	  TIM1->CCR1 = CH1_DC;
-	  CH1_DC -= 70;
+
+	while(TIM1_DC > 0) {
+	  TIM1->CCR1 = TIM1_DC;
+	  TIM1_DC -= 280;
 	  HAL_Delay(1);
 	}
+
+	while(TIM2_DC < 65535) {
+	  TIM2->CCR1 = TIM2_DC;
+	  TIM2_DC += 280;
+	  HAL_Delay(1);
+	}
+
+	while(TIM2_DC > 0) {
+	  TIM2->CCR1 = TIM2_DC;
+	  TIM2_DC -= 280;
+	  HAL_Delay(1);
+	}
+
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
 

@@ -98,7 +98,7 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -107,25 +107,25 @@ int main(void)
 
 	while(TIM1_DC < 65535) {
 	  TIM1->CCR1 = TIM1_DC;
-	  TIM1_DC += 280;
+	  TIM1_DC += 1285;
 	  HAL_Delay(1);
 	}
 
 	while(TIM1_DC > 0) {
 	  TIM1->CCR1 = TIM1_DC;
-	  TIM1_DC -= 280;
+	  TIM1_DC -= 1285;
 	  HAL_Delay(1);
 	}
 
 	while(TIM2_DC < 65535) {
 	  TIM2->CCR1 = TIM2_DC;
-	  TIM2_DC += 280;
+	  TIM2_DC += 1285;
 	  HAL_Delay(1);
 	}
 
 	while(TIM2_DC > 0) {
 	  TIM2->CCR1 = TIM2_DC;
-	  TIM2_DC -= 280;
+	  TIM2_DC -= 1285;
 	  HAL_Delay(1);
 	}
 

@@ -401,8 +401,8 @@ int main(void)
  80004e6:	2100      	movs	r1, #0
  80004e8:	4823      	ldr	r0, [pc, #140]	; (8000578 <main+0xb8>)
  80004ea:	f003 f98b 	bl	8003804 <HAL_TIM_PWM_Start>
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
- 80004ee:	2104      	movs	r1, #4
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+ 80004ee:	2100      	movs	r1, #0
  80004f0:	4822      	ldr	r0, [pc, #136]	; (800057c <main+0xbc>)
  80004f2:	f003 f987 	bl	8003804 <HAL_TIM_PWM_Start>
 
@@ -416,9 +416,9 @@ int main(void)
  80004f8:	4a21      	ldr	r2, [pc, #132]	; (8000580 <main+0xc0>)
  80004fa:	687b      	ldr	r3, [r7, #4]
  80004fc:	6353      	str	r3, [r2, #52]	; 0x34
-	  TIM1_DC += 280;
+	  TIM1_DC += 1285;
  80004fe:	687b      	ldr	r3, [r7, #4]
- 8000500:	f503 738c 	add.w	r3, r3, #280	; 0x118
+ 8000500:	f203 5305 	addw	r3, r3, #1285	; 0x505
  8000504:	607b      	str	r3, [r7, #4]
 	  HAL_Delay(1);
  8000506:	2001      	movs	r0, #1
@@ -436,9 +436,9 @@ int main(void)
  8000518:	4a19      	ldr	r2, [pc, #100]	; (8000580 <main+0xc0>)
  800051a:	687b      	ldr	r3, [r7, #4]
  800051c:	6353      	str	r3, [r2, #52]	; 0x34
-	  TIM1_DC -= 280;
+	  TIM1_DC -= 1285;
  800051e:	687b      	ldr	r3, [r7, #4]
- 8000520:	f5a3 738c 	sub.w	r3, r3, #280	; 0x118
+ 8000520:	f2a3 5305 	subw	r3, r3, #1285	; 0x505
  8000524:	607b      	str	r3, [r7, #4]
 	  HAL_Delay(1);
  8000526:	2001      	movs	r0, #1
@@ -455,9 +455,9 @@ int main(void)
  8000534:	f04f 4280 	mov.w	r2, #1073741824	; 0x40000000
  8000538:	683b      	ldr	r3, [r7, #0]
  800053a:	6353      	str	r3, [r2, #52]	; 0x34
-	  TIM2_DC += 280;
+	  TIM2_DC += 1285;
  800053c:	683b      	ldr	r3, [r7, #0]
- 800053e:	f503 738c 	add.w	r3, r3, #280	; 0x118
+ 800053e:	f203 5305 	addw	r3, r3, #1285	; 0x505
  8000542:	603b      	str	r3, [r7, #0]
 	  HAL_Delay(1);
  8000544:	2001      	movs	r0, #1
@@ -475,9 +475,9 @@ int main(void)
  8000556:	f04f 4280 	mov.w	r2, #1073741824	; 0x40000000
  800055a:	683b      	ldr	r3, [r7, #0]
  800055c:	6353      	str	r3, [r2, #52]	; 0x34
-	  TIM2_DC -= 280;
+	  TIM2_DC -= 1285;
  800055e:	683b      	ldr	r3, [r7, #0]
- 8000560:	f5a3 738c 	sub.w	r3, r3, #280	; 0x118
+ 8000560:	f2a3 5305 	subw	r3, r3, #1285	; 0x505
  8000564:	603b      	str	r3, [r7, #0]
 	  HAL_Delay(1);
  8000566:	2001      	movs	r0, #1
@@ -1411,8 +1411,8 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
  8000b0c:	f003 0301 	and.w	r3, r3, #1
  8000b10:	60fb      	str	r3, [r7, #12]
  8000b12:	68fb      	ldr	r3, [r7, #12]
-    GPIO_InitStruct.Pin = GPIO_PIN_0;
- 8000b14:	2301      	movs	r3, #1
+    GPIO_InitStruct.Pin = GPIO_PIN_5;
+ 8000b14:	2320      	movs	r3, #32
  8000b16:	617b      	str	r3, [r7, #20]
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
  8000b18:	2302      	movs	r3, #2
